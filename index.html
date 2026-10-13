@@ -2,8 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Security Headers -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self';">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
@@ -12,615 +11,100 @@
     <title>Tìm Kiếm Điểm Thu BHXH - Đà Nẵng</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        html, body {
-            width: 100%;
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%);
-            min-height: 100vh;
-        }
-
-        /* Top Info Bar */
-        .top-bar {
-            background: #0d47a1;
-            color: white;
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 13px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .top-bar-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .top-bar-item i {
-            font-style: normal;
-        }
-
-        /* Main Container */
-        .container {
-            position: relative;
-            z-index: 2;
-            max-width: 1200px;
-            margin: 20px auto 0;
-            padding: 0 15px;
-        }
-
-        /* Header Card */
-        .header-card {
-            background: white;
-            border-radius: 0 0 20px 20px;
-            padding: 30px 20px 20px;
-            margin-bottom: 20px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .logo-container {
-            margin-bottom: 15px;
-        }
-
-        .logo-container img {
-            height: 70px;
-            width: auto;
-        }
-
-        h1 {
-            font-size: 1.8rem;
-            color: #1565c0;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .subtitle {
-            font-size: 1rem;
-            color: #f57c00;
-            font-weight: 500;
-        }
-
-        /* Banner Container with Marquee */
-        .banner-container {
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            position: relative;
-        }
-
-        .banner-main {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .banner-main img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .banner-marquee {
-            background: #0d47a1;
-            padding: 12px 0;
-            overflow: hidden;
-        }
-
-        .banner-marquee marquee {
-            font-size: 24px;
-            font-weight: 600;
-            color: white;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        /* Small Banners Container */
-        .small-banners-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .small-banner {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            transition: transform 0.3s ease;
-        }
-
-        .small-banner:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-        }
-
-        .small-banner img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Search Card */
-        .search-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .search-group {
-            margin-bottom: 20px;
-        }
-
-        .search-group:last-of-type {
-            margin-bottom: 0;
-        }
-
-        .search-label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-            color: #1565c0;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
-
-        .search-label input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
-
-        .input-wrapper {
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 12px 45px 12px 15px;
-            border: 2px solid #e3f2fd;
-            border-radius: 8px;
-            font-size: 14px;
-            font-family: 'Roboto', sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        .search-select {
-            width: 100%;
-            padding: 12px 45px 12px 15px;
-            border: 2px solid #e3f2fd;
-            border-radius: 8px;
-            font-size: 14px;
-            font-family: 'Roboto', sans-serif;
-            transition: all 0.3s ease;
-            background: white;
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231565c0' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 15px center;
-        }
-
-        .search-input:focus, .search-select:focus {
-            outline: none;
-            border-color: #1976d2;
-            box-shadow: 0 2px 8px rgba(25,118,210,0.2);
-        }
-
-        .input-icon {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 20px;
-            pointer-events: none;
-        }
-
-        /* Autocomplete */
-        .autocomplete-list {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            border: 2px solid #e3f2fd;
-            border-radius: 8px;
-            margin-top: 5px;
-            max-height: 200px;
-            overflow-y: auto;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            display: none;
-        }
-
-        .autocomplete-list.show {
-            display: block;
-        }
-
-        .autocomplete-item {
-            padding: 10px 15px;
-            cursor: pointer;
-            transition: background 0.2s ease;
-            font-size: 14px;
-        }
-
-        .autocomplete-item:hover {
-            background: #e3f2fd;
-        }
-
-        /* Buttons */
-        .button-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        .btn {
-            padding: 12px 20px;
-            border: none;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 600;
-            font-family: 'Roboto', sans-serif;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .btn-search {
-            background: #1976d2;
-            color: white;
-        }
-
-        .btn-search:hover {
-            background: #1565c0;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(25,118,210,0.3);
-        }
-
-        .btn-reset {
-            background: #f5f5f5;
-            color: #666;
-        }
-
-        .btn-reset:hover {
-            background: #e0e0e0;
-            transform: translateY(-2px);
-        }
-
-        /* Stats Cards */
-        .stats-container {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .stat-card {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .stat-card.left {
-            text-align: center;
-            border: 3px solid #1976d2;
-        }
-
-        .stat-card.left .stat-title {
-            font-size: 16px;
-            color: #1976d2;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .stat-card.right {
-            text-align: left;
-            border: none;
-        }
-
-        .stat-number {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: #1976d2;
-            margin-bottom: 10px;
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 16px;
-            color: #1976d2;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .stat-description {
-            font-size: 15px;
-            color: #333;
-            line-height: 1.6;
-            text-align: justify;
-        }
-
-        .stat-description strong {
-            color: #1976d2;
-        }
-
-        /* Hidden state */
-        .hidden {
-            display: none !important;
-        }
-
-        /* Results */
-        .results-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .result-card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border-top: 4px solid #1976d2;
-        }
-
-        .result-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 15px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid #f5f5f5;
-        }
-
-        .card-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #1976d2, #42a5f5);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .card-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: #1565c0;
-            line-height: 1.3;
-            flex: 1;
-        }
-
-        .card-info {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .info-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            font-size: 14px;
-        }
-
-        .info-label {
-            font-weight: 600;
-            color: #666;
-            min-width: 110px;
-            flex-shrink: 0;
-        }
-
-        .info-value {
-            color: #333;
-            flex: 1;
-            word-break: break-word;
-        }
-
-        .info-value a {
-            color: #1976d2;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .info-value a:hover {
-            text-decoration: underline;
-        }
-
-        /* No Results */
-        .no-results {
-            background: white;
-            border-radius: 12px;
-            padding: 60px 20px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            grid-column: 1 / -1;
-        }
-
-        .no-results-icon {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-        }
-
-        .no-results h3 {
-            font-size: 1.5rem;
-            color: #1565c0;
-            margin-bottom: 8px;
-        }
-
-        .no-results p {
-            font-size: 14px;
-            color: #666;
-        }
-
-        /* Responsive */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; overflow-x: hidden; }
+        body { font-family: 'Roboto', sans-serif; background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%); min-height: 100vh; }
+        :root { box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+        html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+        .top-bar { background: #0d47a1; color: white; padding: 8px 20px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; flex-wrap: wrap; gap: 15px; }
+        .top-bar-item { display: flex; align-items: center; gap: 5px; }
+        .top-bar-item i { font-style: normal; }
+        .container { position: relative; z-index: 2; max-width: 1200px; margin: 20px auto 0; padding: 0 15px; }
+        .banner-container { width: 100%; margin: 0; padding: 0; position: relative; }
+        .banner-main { position: relative; overflow: hidden; }
+        .banner-main img { width: 100%; height: auto; display: block; }
+        .banner-marquee { background: #0d47a1; padding: 12px 0; overflow: hidden; }
+        .banner-marquee marquee { font-size: 24px; font-weight: 600; color: white; font-family: 'Roboto', sans-serif; }
+        .small-banners-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+        .small-banner { border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.15); transition: transform 0.3s ease; }
+        .small-banner:hover { transform: translateY(-5px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+        .small-banner img { width: 100%; height: auto; display: block; }
+        .search-card { background: white; border-radius: 15px; padding: 25px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .search-group { margin-bottom: 20px; }
+        .search-group:last-of-type { margin-bottom: 0; }
+        .search-label { display: flex; align-items: center; gap: 8px; font-weight: 600; color: #1565c0; margin-bottom: 10px; font-size: 14px; }
+        .search-label input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; }
+        .input-wrapper { position: relative; }
+        .search-input { width: 100%; padding: 12px 45px 12px 15px; border: 2px solid #e3f2fd; border-radius: 8px; font-size: 14px; font-family: 'Roboto', sans-serif; transition: all 0.3s ease; }
+        .search-select { width: 100%; padding: 12px 45px 12px 15px; border: 2px solid #e3f2fd; border-radius: 8px; font-size: 14px; font-family: 'Roboto', sans-serif; transition: all 0.3s ease; background: white; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231565c0' d='M6 9L1 4h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 15px center; }
+        .search-input:focus, .search-select:focus { outline: none; border-color: #1976d2; box-shadow: 0 2px 8px rgba(25,118,210,0.2); }
+        .input-icon { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); font-size: 20px; pointer-events: none; }
+        .autocomplete-list { position: absolute; top: 100%; left: 0; right: 0; background: white; border: 2px solid #e3f2fd; border-radius: 8px; margin-top: 5px; max-height: 200px; overflow-y: auto; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.15); display: none; }
+        .autocomplete-list.show { display: block; }
+        .autocomplete-item { padding: 10px 15px; cursor: pointer; transition: background 0.2s ease; font-size: 14px; }
+        .autocomplete-item:hover { background: #e3f2fd; }
+        .button-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px; }
+        .btn { padding: 12px 20px; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; font-family: 'Roboto', sans-serif; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .btn-search { background: #1976d2; color: white; }
+        .btn-search:hover { background: #1565c0; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(25,118,210,0.3); }
+        .btn-reset { background: #f5f5f5; color: #666; }
+        .btn-reset:hover { background: #e0e0e0; transform: translateY(-2px); }
+        .stats-container { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; margin-bottom: 20px; }
+        .stat-card { background: white; border-radius: 12px; padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: center; }
+        .stat-card.left { text-align: center; border: 3px solid #1976d2; }
+        .stat-card.left .stat-title { font-size: 16px; color: #1976d2; font-weight: 700; margin-bottom: 15px; }
+        .stat-card.right { text-align: left; border: none; }
+        .stat-number { font-size: 3.5rem; font-weight: 700; color: #1976d2; margin-bottom: 10px; line-height: 1; }
+        .stat-label { font-size: 16px; color: #1976d2; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .stat-description { font-size: 15px; color: #333; line-height: 1.6; text-align: justify; }
+        .stat-description strong { color: #1976d2; }
+        .hidden { display: none !important; }
+        .results-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .result-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.3s ease; border-top: 4px solid #1976d2; }
+        .result-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        .card-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px; padding-bottom: 12px; border-bottom: 2px solid #f5f5f5; }
+        .card-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #1976d2, #42a5f5); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+        .card-title { font-size: 16px; font-weight: 700; color: #1565c0; line-height: 1.3; flex: 1; }
+        .card-info { display: flex; flex-direction: column; gap: 10px; }
+        .info-row { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; }
+        .info-label { font-weight: 600; color: #666; min-width: 110px; flex-shrink: 0; }
+        .info-value { color: #333; flex: 1; word-break: break-word; }
+        .info-value a { color: #1976d2; text-decoration: none; font-weight: 500; }
+        .info-value a:hover { text-decoration: underline; }
+        .no-results { background: white; border-radius: 12px; padding: 60px 20px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1); grid-column: 1 / -1; }
+        .no-results-icon { font-size: 3.5rem; margin-bottom: 15px; }
+        .no-results h3 { font-size: 1.5rem; color: #1565c0; margin-bottom: 8px; }
+        .no-results p { font-size: 14px; color: #666; }
         @media (max-width: 768px) {
-            .top-bar {
-                font-size: 11px;
-                padding: 8px 10px;
-                flex-wrap: wrap;
-            }
-
-            .top-bar-item {
-                font-size: 10px;
-            }
-
-            .banner-marquee marquee {
-                font-size: 14px;
-            }
-
-            .small-banners-container {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .search-card {
-                padding: 20px 15px;
-            }
-
-            .search-label {
-                font-size: 13px;
-            }
-
-            .search-input {
-                font-size: 14px;
-                padding: 12px 40px 12px 12px;
-            }
-
-            .btn {
-                font-size: 14px;
-                padding: 12px 20px;
-            }
-
-            .button-row {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-
-            .stats-container {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .stat-card {
-                padding: 20px;
-            }
-
-            .stat-number {
-                font-size: 2.5rem;
-            }
-
-            .stat-description {
-                font-size: 14px;
-            }
-
-            .results-container {
-                grid-template-columns: 1fr;
-            }
-
-            .result-card {
-                padding: 18px;
-            }
-
-            .card-title {
-                font-size: 15px;
-            }
-
-            .info-row {
-                font-size: 13px;
-            }
+            .top-bar { font-size: 11px; padding: 8px 10px; flex-wrap: wrap; }
+            .top-bar-item { font-size: 10px; }
+            .banner-marquee marquee { font-size: 14px; }
+            .small-banners-container { grid-template-columns: 1fr; gap: 15px; }
+            .search-card { padding: 20px 15px; }
+            .button-row { grid-template-columns: 1fr; gap: 12px; }
+            .stats-container { grid-template-columns: 1fr; gap: 15px; }
+            .stat-number { font-size: 2.5rem; }
+            .results-container { grid-template-columns: 1fr; }
         }
-
         @media (max-width: 480px) {
-            .top-bar {
-                justify-content: center;
-                gap: 8px;
-            }
-
-            .top-bar-item {
-                font-size: 9px;
-            }
-
-            .banner-marquee marquee {
-                font-size: 12px;
-                padding: 0 10px;
-            }
-
-            .container {
-                padding: 0 10px;
-            }
-
-            .search-card {
-                padding: 18px 12px;
-            }
-
-            .stat-number {
-                font-size: 2rem;
-            }
-
-            .stat-label {
-                font-size: 13px;
-            }
-
-            .stat-title {
-                font-size: 14px;
-            }
+            .top-bar { justify-content: center; gap: 8px; }
+            .banner-marquee marquee { font-size: 12px; padding: 0 10px; }
+            .container { padding: 0 10px; }
+            .stat-number { font-size: 2rem; }
         }
+
     </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="top-bar-item">
-            <i>📞</i> Tổng đài hỗ trợ: 1900 90 68
-        </div>
-        <div class="top-bar-item">
-            <i>🌐</i> danang.baohiemxahoi.gov.vn
-        </div>
-        <div class="top-bar-item">
-            <i>📧</i> truyenthong@danang.vss.gov.vn
-        </div>
-        <div class="top-bar-item">
-            <i>📘</i> facebook.com/bhxhdanang
-        </div>
-        <div class="top-bar-item">
-            <i>📞</i> 0236.3 834 773
-        </div>
-    </div>
 
-    <!-- Banner Full Width -->
+    <div class="top-bar">
+        <div class="top-bar-item"><i>📞</i> Tổng đài hỗ trợ: 1900 90 68</div>
+        <div class="top-bar-item"><i>🌐</i> danang.baohiemxahoi.gov.vn</div>
+        <div class="top-bar-item"><i>📧</i> truyenthong@danang.vss.gov.vn</div>
+        <div class="top-bar-item"><i>📘</i> facebook.com/bhxhdanang</div>
+        <div class="top-bar-item"><i>📞</i> 0236.3 834 773</div>
+    </div>
     <div class="banner-container">
         <div class="banner-main">
             <img src="https://i.postimg.cc/pLrkrmxN/22222.png" alt="Tra Cứu Địa Điểm Thu BHXH, BHYT">
@@ -628,13 +112,10 @@
         <div class="banner-marquee">
             <marquee scrollamount="6" behavior="scroll">
                  Toàn dân tham gia bảo hiểm xã hội, bảo hiểm y tế - Vì lợi ích bản thân, gia đình và cộng đồng
-            </marquee style="font-size: 30px; font-weight: bold>
+            </marquee>
         </div>
     </div>
-
     <div class="container">
-        <!-- Security Warning -->
-        <!-- Small Banners -->
         <div class="small-banners-container">
             <div class="small-banner">
                 <img src="https://raw.githubusercontent.com/thebaodn/hi-nh-BHYT/refs/heads/main/cf0e02b0-1ad3-4e5b-b2af-c1d9f5944826.png" alt="Mức đóng BHYT Hộ Gia Đình">
@@ -643,52 +124,37 @@
                 <img src="https://danang.baohiemxahoi.gov.vn:4545/pic/01-BHXH/M%e1%bb%a8C%20%c4%90%c3%93NG%20BHXH%20T%e1%bb%b0%20NGUY%e1%bb%86N%20M%e1%bb%9aI-2026_20260810100404AM.png" alt="Mức đóng BHXH Tự Nguyện">
             </div>
         </div>
-
-        <!-- Search Card -->
         <div class="search-card">
             <div class="search-group">
                 <label class="search-label">
                     <input type="checkbox" checked disabled> Tìm kiếm theo Phường/Xã
                 </label>
                 <div class="input-wrapper">
-                    <input type="text" 
-                           id="searchLocation" 
-                           class="search-input" 
-                           placeholder="Chọn phường/xã..."
-                           autocomplete="off">
+                    <input type="text" id="searchLocation" class="search-input" placeholder="Chọn phường/xã..." autocomplete="off">
                     <span class="input-icon">📍</span>
                     <div id="locationAutocomplete" class="autocomplete-list"></div>
                 </div>
             </div>
-
             <div class="search-group">
                 <label class="search-label">
                     <input type="checkbox" checked disabled> Tìm kiếm theo Tổ chức hỗ trợ phát triển
                 </label>
                 <div class="input-wrapper">
-                    <select id="searchOrg" 
-                           class="search-select">
+                    <select id="searchOrg" class="search-select">
                         <option value="">-- Chọn tổ chức hoặc gõ để tìm kiếm --</option>
                     </select>
                     <span class="input-icon">🏢</span>
                 </div>
             </div>
-
             <div class="button-row">
-                <button class="btn btn-search" id="btnSearch">
-                    <span>🔍</span> Tìm Kiếm
-                </button>
-                <button class="btn btn-reset" id="btnReset">
-                    <span>🔄</span> Đặt Lại
-                </button>
+                <button class="btn btn-search" id="btnSearch"><span>🔍</span> Tìm Kiếm</button>
+                <button class="btn btn-reset" id="btnReset"><span>🔄</span> Đặt Lại</button>
             </div>
         </div>
-
-        <!-- Stats -->
         <div class="stats-container hidden" id="statsContainer">
             <div class="stat-card left">
                 <div class="stat-title">Kết quả tìm kiếm:</div>
-                <div class="stat-number" id="statsRatio">0/967</div>
+                <div class="stat-number" id="statsRatio">0/964</div>
                 <div class="stat-label">NHÂN VIÊN THU</div>
             </div>
             <div class="stat-card right">
@@ -697,8 +163,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Results -->
         <div class="results-container" id="resultsContainer"></div>
     </div>
 
@@ -3697,11 +3161,11 @@
   {
     "TT": "300",
     "organization": "Bưu Điện KV Bắc Trà My",
-    "name": "cho",
+    "name": "Hồ Thị Xuân",
     "employee_code": "NV049192011851",
-    "phone": "0348763335",
-    "collection_point": "Thôn 1",
-    "ward": "Xã Trà Đốc",
+    "phone": "Thôn 1",
+    "collection_point": "Xã Trà Đốc",
+    "ward": "Bưu điện",
     "note": ""
   },
   {
@@ -3810,8 +3274,8 @@
     "name": "Nguyễn Vũ Trường Giang",
     "employee_code": "NV049181019049",
     "phone": "0916225949",
-    "collection_point": "Điểm BĐ-VHX Duy Trinh",
-    "ward": "Xã Duy Xuyên",
+    "collection_point": "Duy Trinh (cũ)",
+    "ward": "Xã Nam Phước",
     "note": ""
   },
   {
@@ -3937,16 +3401,6 @@
   {
     "TT": "324",
     "organization": "Bưu Điện Khu vưc Duy Xuyên",
-    "name": "Phạm Thị Thắm",
-    "employee_code": "NV049188011394",
-    "phone": "0375122499",
-    "collection_point": "Điểm BĐ-VHX Duy Phước",
-    "ward": "Xã Nam Phước",
-    "note": ""
-  },
-  {
-    "TT": "325",
-    "organization": "Bưu Điện Khu vưc Duy Xuyên",
     "name": "Trần Thị Vân",
     "employee_code": "NV049190013748",
     "phone": "0935727617",
@@ -3955,7 +3409,7 @@
     "note": ""
   },
   {
-    "TT": "326",
+    "TT": "325",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Văn Thị Trang",
     "employee_code": "NV049187004199",
@@ -3965,7 +3419,7 @@
     "note": ""
   },
   {
-    "TT": "327",
+    "TT": "326",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Nguyễn Thị Sương",
     "employee_code": "NV049163007120",
@@ -3975,7 +3429,7 @@
     "note": ""
   },
   {
-    "TT": "328",
+    "TT": "327",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Trần Thị Chính",
     "employee_code": "NV049183017357",
@@ -3985,7 +3439,7 @@
     "note": ""
   },
   {
-    "TT": "329",
+    "TT": "328",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Lê Thị Hạnh",
     "employee_code": "NV049167001335",
@@ -3995,7 +3449,7 @@
     "note": ""
   },
   {
-    "TT": "330",
+    "TT": "329",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Lê Tô Ngọc Tươi",
     "employee_code": "NV049181013822",
@@ -4005,7 +3459,7 @@
     "note": ""
   },
   {
-    "TT": "331",
+    "TT": "330",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Nguyễn Thị Thuận",
     "employee_code": "NV049179008438",
@@ -4015,7 +3469,7 @@
     "note": ""
   },
   {
-    "TT": "332",
+    "TT": "331",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Nguyễn Thị Hồng Sương",
     "employee_code": "NV049189014313",
@@ -4025,7 +3479,7 @@
     "note": ""
   },
   {
-    "TT": "333",
+    "TT": "332",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Đinh Thị Như Nương",
     "employee_code": "NV049191009985",
@@ -4035,7 +3489,7 @@
     "note": ""
   },
   {
-    "TT": "334",
+    "TT": "333",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Nguyễn Thị Thảo",
     "employee_code": "NV049189006024",
@@ -4045,7 +3499,7 @@
     "note": ""
   },
   {
-    "TT": "335",
+    "TT": "334",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Nguyễn Thị Mai",
     "employee_code": "NV049191013277",
@@ -4055,7 +3509,7 @@
     "note": ""
   },
   {
-    "TT": "336",
+    "TT": "335",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Hà Chiêu Sa",
     "employee_code": "NV049189006168",
@@ -4065,17 +3519,17 @@
     "note": ""
   },
   {
-    "TT": "337",
+    "TT": "336",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Đoàn Thị Thương",
     "employee_code": "NV049188008169",
     "phone": "0969755766",
-    "collection_point": "Bưu điện VHX Đại Hòa",
-    "ward": "Xã Đại Lộc",
+    "collection_point": "Bưu điện VHX Đại Quang",
+    "ward": "Xã Hà Nha",
     "note": ""
   },
   {
-    "TT": "338",
+    "TT": "337",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Phạm Thị Mỹ Bình",
     "employee_code": "NV049179008544",
@@ -4085,7 +3539,7 @@
     "note": ""
   },
   {
-    "TT": "339",
+    "TT": "338",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Phan Thị Hoài Thủy",
     "employee_code": "NV049182006364",
@@ -4095,7 +3549,7 @@
     "note": ""
   },
   {
-    "TT": "340",
+    "TT": "339",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Mai Thị Thảo",
     "employee_code": "NV049197009443",
@@ -4105,7 +3559,7 @@
     "note": ""
   },
   {
-    "TT": "341",
+    "TT": "340",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "A Lăng Thị Hòa",
     "employee_code": "NV049179010686",
@@ -4115,7 +3569,7 @@
     "note": ""
   },
   {
-    "TT": "342",
+    "TT": "341",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Phan Thị Nghi",
     "employee_code": "NV049192009899",
@@ -4125,7 +3579,7 @@
     "note": ""
   },
   {
-    "TT": "343",
+    "TT": "342",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Mai Văn Tuấn",
     "employee_code": "NV049090001461",
@@ -4135,7 +3589,7 @@
     "note": ""
   },
   {
-    "TT": "344",
+    "TT": "343",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Bùi Thị Xuân Sương",
     "employee_code": "NV049186015148",
@@ -4145,7 +3599,7 @@
     "note": ""
   },
   {
-    "TT": "345",
+    "TT": "344",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Phạm Thị Trinh",
     "employee_code": "NV049182009172",
@@ -4155,7 +3609,7 @@
     "note": ""
   },
   {
-    "TT": "346",
+    "TT": "345",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Hồ Văn Hồng",
     "employee_code": "NV049070012807",
@@ -4165,7 +3619,7 @@
     "note": ""
   },
   {
-    "TT": "347",
+    "TT": "346",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Nguyễn Thị Lan Phượng",
     "employee_code": "NV049180002498",
@@ -4175,7 +3629,7 @@
     "note": ""
   },
   {
-    "TT": "348",
+    "TT": "347",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Đặng Thị Thanh Lan",
     "employee_code": "NV049181004604",
@@ -4185,7 +3639,7 @@
     "note": ""
   },
   {
-    "TT": "349",
+    "TT": "348",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Võ Thị Vân Anh",
     "employee_code": "NV049198011451",
@@ -4195,7 +3649,7 @@
     "note": ""
   },
   {
-    "TT": "350",
+    "TT": "349",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Nguyễn Thị Hiệp",
     "employee_code": "NV049190005719",
@@ -4205,7 +3659,7 @@
     "note": ""
   },
   {
-    "TT": "351",
+    "TT": "350",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Nguyễn Thị Thúy Diễm",
     "employee_code": "NV049196008962",
@@ -4215,7 +3669,7 @@
     "note": ""
   },
   {
-    "TT": "352",
+    "TT": "351",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Võ Thị Ngọc Hương",
     "employee_code": "NV049182012305",
@@ -4225,7 +3679,7 @@
     "note": ""
   },
   {
-    "TT": "353",
+    "TT": "352",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Võ Thanh Hùng",
     "employee_code": "NV049070021226",
@@ -4235,7 +3689,7 @@
     "note": ""
   },
   {
-    "TT": "354",
+    "TT": "353",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Huỳnh Thị Kim Anh",
     "employee_code": "NV049194018432",
@@ -4245,7 +3699,7 @@
     "note": ""
   },
   {
-    "TT": "355",
+    "TT": "354",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Phạm Thị Bích Thuyền",
     "employee_code": "NV049188017483",
@@ -4255,7 +3709,7 @@
     "note": ""
   },
   {
-    "TT": "356",
+    "TT": "355",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Võ Thị Phương Nhung",
     "employee_code": "NV049181008748",
@@ -4265,7 +3719,7 @@
     "note": ""
   },
   {
-    "TT": "357",
+    "TT": "356",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Tưởng Văn Thìn",
     "employee_code": "NV049076014522",
@@ -4275,7 +3729,7 @@
     "note": ""
   },
   {
-    "TT": "358",
+    "TT": "357",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Nguyễn Thị Kim Chi",
     "employee_code": "NV049192009708",
@@ -4285,7 +3739,7 @@
     "note": ""
   },
   {
-    "TT": "359",
+    "TT": "358",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Trần Thị Thúy Kiều",
     "employee_code": "NV049191008733",
@@ -4295,7 +3749,7 @@
     "note": ""
   },
   {
-    "TT": "360",
+    "TT": "359",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Lê Thị Minh",
     "employee_code": "NV049179007993",
@@ -4305,7 +3759,7 @@
     "note": ""
   },
   {
-    "TT": "361",
+    "TT": "360",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Huỳnh Thị Mỹ Hạnh",
     "employee_code": "NV049189016116",
@@ -4315,7 +3769,7 @@
     "note": ""
   },
   {
-    "TT": "362",
+    "TT": "361",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Nguyễn Thị Bích Phượng",
     "employee_code": "NV049180000523",
@@ -4325,7 +3779,7 @@
     "note": ""
   },
   {
-    "TT": "363",
+    "TT": "362",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Lương Thị Diễn",
     "employee_code": "NV049185008589",
@@ -4335,7 +3789,7 @@
     "note": ""
   },
   {
-    "TT": "364",
+    "TT": "363",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Lê Thị Tâm",
     "employee_code": "NV049182007084",
@@ -4345,7 +3799,7 @@
     "note": ""
   },
   {
-    "TT": "365",
+    "TT": "364",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Nguyễn Thị Mỹ Nguyệt",
     "employee_code": "NV049182005159",
@@ -4355,7 +3809,7 @@
     "note": ""
   },
   {
-    "TT": "366",
+    "TT": "365",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Lê Thị Thu Hiền",
     "employee_code": "NV049182010160",
@@ -4365,7 +3819,7 @@
     "note": ""
   },
   {
-    "TT": "367",
+    "TT": "366",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Lê Văn Ba",
     "employee_code": "NV049081006037",
@@ -4375,7 +3829,7 @@
     "note": ""
   },
   {
-    "TT": "368",
+    "TT": "367",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Đỗ Thị Vân",
     "employee_code": "NV049181005119",
@@ -4385,7 +3839,7 @@
     "note": ""
   },
   {
-    "TT": "369",
+    "TT": "368",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Doãn Thị Hậu",
     "employee_code": "NV049181006980",
@@ -4395,7 +3849,7 @@
     "note": ""
   },
   {
-    "TT": "370",
+    "TT": "369",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Nguyễn Thị Mỹ",
     "employee_code": "NV049185012049",
@@ -4405,7 +3859,7 @@
     "note": ""
   },
   {
-    "TT": "371",
+    "TT": "370",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Nguyễn Thị Hiền Nga",
     "employee_code": "NV049183003743",
@@ -4415,7 +3869,7 @@
     "note": ""
   },
   {
-    "TT": "372",
+    "TT": "371",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Trần Xuân Huệ",
     "employee_code": "NV049191004368",
@@ -4425,7 +3879,7 @@
     "note": ""
   },
   {
-    "TT": "373",
+    "TT": "372",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Võ Thị Lệ",
     "employee_code": "NV049179091202",
@@ -4435,7 +3889,7 @@
     "note": ""
   },
   {
-    "TT": "374",
+    "TT": "373",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Lê Thị Như Nguyệt",
     "employee_code": "NV049179016371",
@@ -4445,7 +3899,7 @@
     "note": ""
   },
   {
-    "TT": "375",
+    "TT": "374",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Phan Thị Tú Anh",
     "employee_code": "NV049170018803",
@@ -4455,7 +3909,7 @@
     "note": ""
   },
   {
-    "TT": "376",
+    "TT": "375",
     "organization": "Bưu Điện Khu vực Đại Lộc",
     "name": "Đỗ Thị Ngọc Trâm",
     "employee_code": "NV046195000678",
@@ -4465,7 +3919,7 @@
     "note": ""
   },
   {
-    "TT": "377",
+    "TT": "376",
     "organization": "Bưu điện xã Đại Lộc",
     "name": "Ngô Thị Thanh Hoa",
     "employee_code": "NV049181005652",
@@ -4475,7 +3929,7 @@
     "note": ""
   },
   {
-    "TT": "378",
+    "TT": "377",
     "organization": "Bưu điện xã Thu Bồn",
     "name": "Võ Thị Thu Hoài",
     "employee_code": "NV049185017816",
@@ -4485,7 +3939,7 @@
     "note": ""
   },
   {
-    "TT": "379",
+    "TT": "378",
     "organization": "Bưu điện xã Nam Phước",
     "name": "Huỳnh Thị Thu Thanh",
     "employee_code": "NV049169022407",
@@ -4495,7 +3949,7 @@
     "note": ""
   },
   {
-    "TT": "380",
+    "TT": "379",
     "organization": "Bưu Điện Khu vực Thạnh Mỹ",
     "name": "Bờ Nướch Thị Nghê",
     "employee_code": "NV049175008684",
@@ -4505,7 +3959,7 @@
     "note": ""
   },
   {
-    "TT": "381",
+    "TT": "380",
     "organization": "Bưu Điện Khu vực Thạnh Mỹ",
     "name": "Nguyễn Thị Ngọc Anh",
     "employee_code": "NV049193019888",
@@ -4515,7 +3969,7 @@
     "note": ""
   },
   {
-    "TT": "382",
+    "TT": "381",
     "organization": "Bưu Điện Khu vực Thạnh Mỹ",
     "name": "Aviết Nhi",
     "employee_code": "NV049196014579",
@@ -4525,7 +3979,7 @@
     "note": ""
   },
   {
-    "TT": "383",
+    "TT": "382",
     "organization": "Bưu Điện Khu vực Thạnh Mỹ",
     "name": "A Lăng Thị Son",
     "employee_code": "NV049193009486",
@@ -4535,7 +3989,7 @@
     "note": ""
   },
   {
-    "TT": "384",
+    "TT": "383",
     "organization": "Bưu Điện Khu vực Thạnh Mỹ",
     "name": "Tơ Đêl Mác",
     "employee_code": "NV049183008986",
@@ -4545,7 +3999,7 @@
     "note": ""
   },
   {
-    "TT": "385",
+    "TT": "384",
     "organization": "Bưu Điện Khu vực Thạnh Mỹ",
     "name": "Bling Phượng",
     "employee_code": "NV049197007991",
@@ -4555,7 +4009,7 @@
     "note": ""
   },
   {
-    "TT": "386",
+    "TT": "385",
     "organization": "Bưu Điện Khu vực Thạnh Mỹ",
     "name": "A Lăng Mịnh",
     "employee_code": "NV049188008409",
@@ -4565,7 +4019,7 @@
     "note": ""
   },
   {
-    "TT": "387",
+    "TT": "386",
     "organization": "Bưu Điện Khu vực Thạnh Mỹ",
     "name": "Hiên Thị Hận",
     "employee_code": "NV049183011907",
@@ -4575,7 +4029,7 @@
     "note": ""
   },
   {
-    "TT": "388",
+    "TT": "387",
     "organization": "Bưu Điện Khu vực Thạnh Mỹ",
     "name": "Hồ Thị Him",
     "employee_code": "NV049194006239",
@@ -4585,7 +4039,7 @@
     "note": ""
   },
   {
-    "TT": "389",
+    "TT": "388",
     "organization": "Bưu Điện Quế Sơn",
     "name": "Võ Văn Lộc",
     "employee_code": "NV049076016620",
@@ -4595,7 +4049,7 @@
     "note": ""
   },
   {
-    "TT": "390",
+    "TT": "389",
     "organization": "Bưu Điện Quế Sơn",
     "name": "Nguyễn Thị Hồng",
     "employee_code": "NV049175011892",
@@ -4605,7 +4059,7 @@
     "note": ""
   },
   {
-    "TT": "391",
+    "TT": "390",
     "organization": "Bưu Điện Quế Sơn",
     "name": "Đoàn Thị Xuân",
     "employee_code": "NV049179010855",
@@ -4615,7 +4069,7 @@
     "note": ""
   },
   {
-    "TT": "392",
+    "TT": "391",
     "organization": "Bưu Điện Quế Sơn",
     "name": "Trần Thị Lợi",
     "employee_code": "NV049181010723",
@@ -4625,7 +4079,7 @@
     "note": ""
   },
   {
-    "TT": "393",
+    "TT": "392",
     "organization": "Bưu Điện Quế Sơn",
     "name": "Nguyễn Thị Mỹ Yến",
     "employee_code": "NV049188011686",
@@ -4635,7 +4089,7 @@
     "note": ""
   },
   {
-    "TT": "394",
+    "TT": "393",
     "organization": "Bưu Điện Quế Sơn",
     "name": "Nguyễn Thị Cẩm Vân",
     "employee_code": "NV049177006677",
@@ -4645,7 +4099,7 @@
     "note": ""
   },
   {
-    "TT": "395",
+    "TT": "394",
     "organization": "Bưu Điện Quế Sơn",
     "name": "Đinh Thị Ly Ly",
     "employee_code": "NV049193017454",
@@ -4655,7 +4109,7 @@
     "note": ""
   },
   {
-    "TT": "396",
+    "TT": "395",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Nguyễn Thị Thanh Tuyền",
     "employee_code": "NV049196007166",
@@ -4665,7 +4119,7 @@
     "note": ""
   },
   {
-    "TT": "397",
+    "TT": "396",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Đinh Thị Thu Hóa",
     "employee_code": "NV044191007707",
@@ -4675,7 +4129,7 @@
     "note": ""
   },
   {
-    "TT": "398",
+    "TT": "397",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Mai Thị Lệ Sương",
     "employee_code": "NV049186004941",
@@ -4685,7 +4139,7 @@
     "note": ""
   },
   {
-    "TT": "399",
+    "TT": "398",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Lưu Thị Nguyên",
     "employee_code": "NV049166003466",
@@ -4695,7 +4149,7 @@
     "note": ""
   },
   {
-    "TT": "400",
+    "TT": "399",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Võ Thị Thu Thủy",
     "employee_code": "NV049189014076",
@@ -4705,7 +4159,7 @@
     "note": ""
   },
   {
-    "TT": "401",
+    "TT": "400",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Nguyễn Thị Thế Văn",
     "employee_code": "NV049177010320",
@@ -4715,7 +4169,7 @@
     "note": ""
   },
   {
-    "TT": "402",
+    "TT": "401",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Nguyễn Thị Thu Thảo",
     "employee_code": "NV049193015498",
@@ -4725,7 +4179,7 @@
     "note": ""
   },
   {
-    "TT": "403",
+    "TT": "402",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Phan Thị Mỹ Lệ",
     "employee_code": "NV049173008517",
@@ -4735,7 +4189,7 @@
     "note": ""
   },
   {
-    "TT": "404",
+    "TT": "403",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Đặng Thị Xuân Hậu",
     "employee_code": "NV049189007920",
@@ -4745,7 +4199,7 @@
     "note": ""
   },
   {
-    "TT": "405",
+    "TT": "404",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Võ Thị Hà",
     "employee_code": "NV049190000856",
@@ -4755,7 +4209,7 @@
     "note": ""
   },
   {
-    "TT": "406",
+    "TT": "405",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Đặng Thị Ngọc Diễm",
     "employee_code": "NV049193015224",
@@ -4765,7 +4219,7 @@
     "note": ""
   },
   {
-    "TT": "407",
+    "TT": "406",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Nguyễn Thị Liên",
     "employee_code": "NV049170018566",
@@ -4775,7 +4229,7 @@
     "note": ""
   },
   {
-    "TT": "408",
+    "TT": "407",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Nguyễn Đoàn Tịnh Tâm",
     "employee_code": "NV049192008515",
@@ -4785,7 +4239,7 @@
     "note": ""
   },
   {
-    "TT": "409",
+    "TT": "408",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Lê Thị Ngọc Ánh",
     "employee_code": "NV049192018616",
@@ -4795,7 +4249,7 @@
     "note": ""
   },
   {
-    "TT": "410",
+    "TT": "409",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Trương Thị Phúc",
     "employee_code": "NV049173012370",
@@ -4805,7 +4259,7 @@
     "note": ""
   },
   {
-    "TT": "411",
+    "TT": "410",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Trần Hoài Duyên",
     "employee_code": "NV049195006105",
@@ -4815,7 +4269,7 @@
     "note": ""
   },
   {
-    "TT": "412",
+    "TT": "411",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Trần Thị Hiền",
     "employee_code": "NV049188010771",
@@ -4825,7 +4279,7 @@
     "note": ""
   },
   {
-    "TT": "413",
+    "TT": "412",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Phan Thị Thúy Anh",
     "employee_code": "NV049193011457",
@@ -4835,7 +4289,7 @@
     "note": ""
   },
   {
-    "TT": "414",
+    "TT": "413",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Đỗ Thị Diễm",
     "employee_code": "NV049195016869",
@@ -4845,7 +4299,7 @@
     "note": ""
   },
   {
-    "TT": "415",
+    "TT": "414",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Trương Thị Liêu",
     "employee_code": "NV049188004889",
@@ -4855,7 +4309,7 @@
     "note": ""
   },
   {
-    "TT": "416",
+    "TT": "415",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Trà Thị Tiên",
     "employee_code": "NV049166013608",
@@ -4865,33 +4319,43 @@
     "note": ""
   },
   {
-    "TT": "417",
+    "TT": "416",
     "organization": "Bưu Điện Xã Thăng Bình",
     "name": "Châu Thị Thanh Tiên",
     "employee_code": "NV049171012649",
     "phone": "0977096332",
-    "collection_point": "Bình Hải",
+    "collection_point": "Châu Khê",
+    "ward": "Xã Thăng Trường",
+    "note": ""
+  },
+  {
+    "TT": "417",
+    "organization": "Bưu Điện Xã Thăng Bình",
+    "name": "Hoàng Thị Liên",
+    "employee_code": "NV049163007342",
+    "phone": "0905801139",
+    "collection_point": "Tổ 4, Phước An",
     "ward": "Xã Thăng Trường",
     "note": ""
   },
   {
     "TT": "418",
     "organization": "Bưu Điện Xã Thăng Bình",
-    "name": "Hoàng Thị Liên",
-    "employee_code": "NV049163007342",
-    "phone": "0905801139",
-    "collection_point": "Bình Sa",
-    "ward": "Xã Thăng Trường",
+    "name": "Lê Thị Li",
+    "employee_code": "NV049185005077",
+    "phone": "0787602602",
+    "collection_point": "Tổ 19, Phước An",
+    "ward": "Xã Thăng Điền",
     "note": ""
   },
   {
     "TT": "419",
     "organization": "Bưu Điện Xã Thăng Bình",
-    "name": "Lê Thị Li",
-    "employee_code": "NV049185005077",
-    "phone": "0787602602",
-    "collection_point": "Bình Trung",
-    "ward": "Xã Thăng Điền",
+    "name": "Hồ Thị Liên",
+    "employee_code": "NV049185013844",
+    "phone": "0905204273",
+    "collection_point": "Phước Ấm",
+    "ward": "Xã Thăng An",
     "note": ""
   },
   {
@@ -5389,7 +4853,7 @@
     "organization": "Công ty Bảo hiểm PVI Đà Nẵng",
     "name": "Nguyễn Thị Bích Phương",
     "employee_code": "NV051179017128",
-    "phone": "0903555906",
+    "phone": "090355590",
     "collection_point": "40 Đinh Công Tráng",
     "ward": "Phường Hải Châu",
     "note": ""
@@ -6538,7 +6002,7 @@
     "TT": "15",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Bùi Thị Quỳnh Diêu",
-    "employee_code": "Nv049188007774",
+    "employee_code": "NV049188007774",
     "phone": "0377596583",
     "collection_point": "Thạnh Mỹ",
     "ward": "Xã Tam Mỹ",
@@ -6837,16 +6301,6 @@
   {
     "TT": "45",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
-    "name": "Nguyễn Thị Hương",
-    "employee_code": "NV049188011291",
-    "phone": "0932448316",
-    "collection_point": "Tổ 23, Thôn Quý Phước",
-    "ward": "Xã Thăng Bình",
-    "note": ""
-  },
-  {
-    "TT": "46",
-    "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Đoàn Văn Lập",
     "employee_code": "NV049056010499",
     "phone": "0905978323",
@@ -6855,7 +6309,7 @@
     "note": ""
   },
   {
-    "TT": "47",
+    "TT": "46",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Võ Thị Hoa Lý",
     "employee_code": "NV049189016999",
@@ -6865,7 +6319,7 @@
     "note": ""
   },
   {
-    "TT": "48",
+    "TT": "47",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Võ Thị Thức",
     "employee_code": "NV049167007119",
@@ -6875,7 +6329,7 @@
     "note": ""
   },
   {
-    "TT": "49",
+    "TT": "48",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Trần Thị Thuỳ Dương",
     "employee_code": "NV049196017990",
@@ -6885,7 +6339,7 @@
     "note": ""
   },
   {
-    "TT": "50",
+    "TT": "49",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Phạm Văn Khương",
     "employee_code": "NV049054004308",
@@ -6895,7 +6349,7 @@
     "note": ""
   },
   {
-    "TT": "51",
+    "TT": "50",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Trần Thị Hà",
     "employee_code": "NV049167010861",
@@ -6905,7 +6359,7 @@
     "note": ""
   },
   {
-    "TT": "52",
+    "TT": "51",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Hoàng Thị Thuý Hoà",
     "employee_code": "NV049164006376",
@@ -6915,7 +6369,7 @@
     "note": ""
   },
   {
-    "TT": "53",
+    "TT": "52",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Võ Trung Hồng",
     "employee_code": "NV049065013652",
@@ -6925,7 +6379,7 @@
     "note": ""
   },
   {
-    "TT": "54",
+    "TT": "53",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Nguyễn Thị Thu Hằng",
     "employee_code": "NV049176011870",
@@ -6935,7 +6389,7 @@
     "note": ""
   },
   {
-    "TT": "55",
+    "TT": "54",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Lê Thị Đồi",
     "employee_code": "NV049168013493",
@@ -6945,7 +6399,7 @@
     "note": ""
   },
   {
-    "TT": "56",
+    "TT": "55",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Đoàn Thị Nhị",
     "employee_code": "NV049168011839",
@@ -6955,7 +6409,7 @@
     "note": ""
   },
   {
-    "TT": "57",
+    "TT": "56",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Phạm Thị Diệu",
     "employee_code": "NV049192006144",
@@ -6965,7 +6419,7 @@
     "note": ""
   },
   {
-    "TT": "58",
+    "TT": "57",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Trần Thị Uyên My",
     "employee_code": "NV049169013611",
@@ -6975,7 +6429,7 @@
     "note": ""
   },
   {
-    "TT": "59",
+    "TT": "58",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Trần Thị Hưng",
     "employee_code": "NV049189008321",
@@ -6985,7 +6439,7 @@
     "note": ""
   },
   {
-    "TT": "60",
+    "TT": "59",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Bùi Khắc Cảnh",
     "employee_code": "NV049071013808",
@@ -6995,7 +6449,7 @@
     "note": ""
   },
   {
-    "TT": "61",
+    "TT": "60",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Nguyễn Thị Hồng Quơn",
     "employee_code": "NV049193011941",
@@ -7005,7 +6459,7 @@
     "note": ""
   },
   {
-    "TT": "62",
+    "TT": "61",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Trần Thị Kiều",
     "employee_code": "NV049189016949",
@@ -7015,7 +6469,7 @@
     "note": ""
   },
   {
-    "TT": "63",
+    "TT": "62",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Bùi Thị Sương",
     "employee_code": "NV049185002009",
@@ -7025,17 +6479,7 @@
     "note": ""
   },
   {
-    "TT": "64",
-    "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
-    "name": "Đoàn Thị Thuý Loan",
-    "employee_code": "NV049183016233",
-    "phone": "0935148829",
-    "collection_point": "Thôn Vân Tiên",
-    "ward": "Xã Thăng An",
-    "note": ""
-  },
-  {
-    "TT": "65",
+    "TT": "63",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Nguyễn Thị Mỹ Lan",
     "employee_code": "NV049169008752",
@@ -7045,7 +6489,7 @@
     "note": ""
   },
   {
-    "TT": "66",
+    "TT": "64",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Hồ Thị Hoa",
     "employee_code": "NV049191001590",
@@ -7055,7 +6499,7 @@
     "note": ""
   },
   {
-    "TT": "67",
+    "TT": "65",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Nguyễn Thị Tín",
     "employee_code": "NV049182009849",
@@ -7065,7 +6509,7 @@
     "note": ""
   },
   {
-    "TT": "68",
+    "TT": "66",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Lê Thị Bài",
     "employee_code": "NV049167004783",
@@ -7075,7 +6519,7 @@
     "note": ""
   },
   {
-    "TT": "69",
+    "TT": "67",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Trần Thị Kim Chung",
     "employee_code": "NV049181004371",
@@ -7085,7 +6529,7 @@
     "note": ""
   },
   {
-    "TT": "70",
+    "TT": "68",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Hà Thị Nguyên",
     "employee_code": "NV049183016923",
@@ -7095,7 +6539,7 @@
     "note": ""
   },
   {
-    "TT": "71",
+    "TT": "69",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Nguyễn Thị Dâng",
     "employee_code": "NV049164006901",
@@ -7105,7 +6549,7 @@
     "note": ""
   },
   {
-    "TT": "72",
+    "TT": "70",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Trần Thị Mười",
     "employee_code": "NV049179011645",
@@ -7115,7 +6559,7 @@
     "note": ""
   },
   {
-    "TT": "73",
+    "TT": "71",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Nguyễn Thị Tố Nga",
     "employee_code": "NV049188003469",
@@ -7125,13 +6569,43 @@
     "note": ""
   },
   {
-    "TT": "74",
+    "TT": "72",
     "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
     "name": "Phan Thị Hạnh",
     "employee_code": "NV049171005964",
     "phone": "0343126212",
     "collection_point": "Phương Nghệ",
     "ward": "Xã Xuân Phú",
+    "note": ""
+  },
+  {
+    "TT": "73",
+    "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
+    "name": "Phan Thị Biên",
+    "employee_code": "NV049158001570",
+    "phone": "0937650277",
+    "collection_point": "Tổ 23, Thôn Quý Phư",
+    "ward": "xã Thăng Bình",
+    "note": ""
+  },
+  {
+    "TT": "74",
+    "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
+    "name": "Huỳnh Lực",
+    "employee_code": "NV049065020600",
+    "phone": "0917687709",
+    "collection_point": "Thôn Nam Bình Sơn",
+    "ward": "xã Đồng Dương",
+    "note": ""
+  },
+  {
+    "TT": "75",
+    "organization": "Tổng Công ty Bảo hiểm PVI - Chi nhánh Bảo hiểm PVI Nam Đà Nẵng",
+    "name": "Đinh Thị Thuý",
+    "employee_code": "NV049183003924",
+    "phone": "0822867887",
+    "collection_point": "Thôn Hương Quế",
+    "ward": "xã Xuân Phú",
     "note": ""
   },
   {
@@ -7988,7 +7462,7 @@
     "TT": "23",
     "organization": "Công ty TNHH Bảo hiểm Sao Sáng",
     "name": "Huỳnh Thị Thùy Trang",
-    "employee_code": "NV'049193010055",
+    "employee_code": "NV049193010055",
     "phone": "0906431031",
     "collection_point": "Số nhà 645 Trần Hưng Đạo, khối phố Ngân Câu",
     "ward": "Phường Điện Bàn Đông",
@@ -8108,7 +7582,7 @@
     "TT": "35",
     "organization": "Công ty TNHH Bảo hiểm Sao Sáng",
     "name": "Nguyễn Thị Huyền Trang",
-    "employee_code": "NV'049192017190",
+    "employee_code": "NV049192017190",
     "phone": "0935608792",
     "collection_point": "Số nhà 37-ĐT 609 Nhà sách Điện Hồng",
     "ward": "xã Điện Bàn Tây",
@@ -8855,7 +8329,7 @@
     "note": ""
   },
   {
-    "TT": "1",
+    "TT": "2",
     "organization": "Công ty TNHH Quỳnh Trang 68",
     "name": "Phan Thị Linh",
     "employee_code": "NV048187004207",
@@ -8865,7 +8339,7 @@
     "note": ""
   },
   {
-    "TT": "2",
+    "TT": "3",
     "organization": "Công ty TNHH Quỳnh Trang 68",
     "name": "Võ Thị Dung",
     "employee_code": "NV049189015595",
@@ -8875,7 +8349,7 @@
     "note": ""
   },
   {
-    "TT": "3",
+    "TT": "4",
     "organization": "Công ty TNHH Quỳnh Trang 68",
     "name": "Vũ Thị Thu Hương",
     "employee_code": "NV048186003942",
@@ -8885,7 +8359,7 @@
     "note": ""
   },
   {
-    "TT": "4",
+    "TT": "5",
     "organization": "Công ty TNHH Quỳnh Trang 68",
     "name": "Huỳnh Kim Hồng",
     "employee_code": "NV060183013501",
@@ -8895,7 +8369,7 @@
     "note": ""
   },
   {
-    "TT": "5",
+    "TT": "6",
     "organization": "Công ty TNHH Quỳnh Trang 68",
     "name": "Nguyễn Vũ Hạnh Dung",
     "employee_code": "NV048189007245",
@@ -8905,7 +8379,7 @@
     "note": ""
   },
   {
-    "TT": "6",
+    "TT": "7",
     "organization": "Công ty TNHH Quỳnh Trang 68",
     "name": "Nguyễn Thị Quỳnh Trang",
     "employee_code": "NV048182006223",
@@ -8915,7 +8389,7 @@
     "note": ""
   },
   {
-    "TT": "7",
+    "TT": "8",
     "organization": "Công ty TNHH Quỳnh Trang 68",
     "name": "Nguyễn Thị Huỳnh Uyên",
     "employee_code": "NV048186002791",
@@ -8925,7 +8399,7 @@
     "note": ""
   },
   {
-    "TT": "8",
+    "TT": "9",
     "organization": "Công ty TNHH Quỳnh Trang 68",
     "name": "Trần Thị Tuyết Nhung",
     "employee_code": "NV048187000691",
@@ -8935,7 +8409,7 @@
     "note": ""
   },
   {
-    "TT": "9",
+    "TT": "10",
     "organization": "Công ty TNHH Quỳnh Trang 68",
     "name": "Phan Thị Mỹ Hạnh",
     "employee_code": "NV044186011891",
@@ -8945,7 +8419,7 @@
     "note": ""
   },
   {
-    "TT": "10",
+    "TT": "11",
     "organization": "Công ty TNHH Quỳnh Trang 68",
     "name": "Phạm Thị Anh Đào",
     "employee_code": "NV048198005139",
@@ -8955,7 +8429,7 @@
     "note": ""
   },
   {
-    "TT": "11",
+    "TT": "12",
     "organization": "Công ty TNHH Quỳnh Trang 68",
     "name": "Nguyễn Xuân Cẩm Châu",
     "employee_code": "NV046182009743",
@@ -8965,7 +8439,7 @@
     "note": ""
   },
   {
-    "TT": "12",
+    "TT": "13",
     "organization": "Công ty TNHH Quỳnh Trang 68",
     "name": "Nguyễn Thị Mỹ An",
     "employee_code": "NV046180012400",
@@ -8975,7 +8449,7 @@
     "note": ""
   },
   {
-    "TT": "13",
+    "TT": "14",
     "organization": "Công ty TNHH Quỳnh Trang 68",
     "name": "Đoàn Ngọc Mậu",
     "employee_code": "NV048081004201",
@@ -8985,7 +8459,7 @@
     "note": ""
   },
   {
-    "TT": "14",
+    "TT": "15",
     "organization": "Công ty TNHH Quỳnh Trang 68",
     "name": "Văn Dương Nam Trân",
     "employee_code": "NV048174004605",
@@ -9187,16 +8661,6 @@
   {
     "TT": "11",
     "organization": "Công ty CP Thương mại Visnam",
-    "name": "Nguyễn Thị Lệ",
-    "employee_code": "NV048183005855",
-    "phone": "0934750578",
-    "collection_point": "135 Phan Bá Phiến",
-    "ward": "Phường Sơn Trà",
-    "note": ""
-  },
-  {
-    "TT": "12",
-    "organization": "Công ty CP Thương mại Visnam",
     "name": "Trần Thị Mai Thi",
     "employee_code": "NV045193011778",
     "phone": "0372145532",
@@ -9205,7 +8669,7 @@
     "note": ""
   },
   {
-    "TT": "13",
+    "TT": "12",
     "organization": "Công ty CP Thương mại Visnam",
     "name": "Phan Thị Thu Thảo",
     "employee_code": "NV045193005158",
@@ -9215,7 +8679,7 @@
     "note": ""
   },
   {
-    "TT": "14",
+    "TT": "13",
     "organization": "Công ty CP Thương mại Visnam",
     "name": "Phan Đại Phước",
     "employee_code": "NV045095007883",
@@ -9225,7 +8689,7 @@
     "note": ""
   },
   {
-    "TT": "15",
+    "TT": "14",
     "organization": "Công ty CP Thương mại Visnam",
     "name": "Trần Tiến Hoàng Huy",
     "employee_code": "NV049201007023",
@@ -9235,7 +8699,7 @@
     "note": ""
   },
   {
-    "TT": "16",
+    "TT": "15",
     "organization": "Công ty CP Thương mại Visnam",
     "name": "Phan Thị Thùy Trang",
     "employee_code": "NV049175015069",
@@ -9245,7 +8709,7 @@
     "note": ""
   },
   {
-    "TT": "17",
+    "TT": "16",
     "organization": "Công ty CP Thương mại Visnam",
     "name": "Bùi Thị Kim Yến",
     "employee_code": "NV048188000958",
@@ -9255,7 +8719,7 @@
     "note": ""
   },
   {
-    "TT": "18",
+    "TT": "17",
     "organization": "Công ty CP Thương mại Visnam",
     "name": "Trần Thị Thu Thảo",
     "employee_code": "NV048305007450",
@@ -9265,7 +8729,7 @@
     "note": ""
   },
   {
-    "TT": "19",
+    "TT": "18",
     "organization": "Công ty CP Thương mại Visnam",
     "name": "Phan Thị Phượng Cầm",
     "employee_code": "NV049194009709",
@@ -9275,7 +8739,7 @@
     "note": ""
   },
   {
-    "TT": "20",
+    "TT": "19",
     "organization": "Công ty CP Thương mại Visnam",
     "name": "Hoàng Thị Hoài Trang",
     "employee_code": "NV045193003125",
@@ -9285,7 +8749,7 @@
     "note": ""
   },
   {
-    "TT": "21",
+    "TT": "20",
     "organization": "Công ty CP Thương mại Visnam",
     "name": "Phạm Thị Hồng Diễm",
     "employee_code": "NV049194001793",
@@ -9295,7 +8759,7 @@
     "note": ""
   },
   {
-    "TT": "22",
+    "TT": "21",
     "organization": "Công ty CP Thương mại Visnam",
     "name": "Lê Thị Anh Thư",
     "employee_code": "NV033195004198",
@@ -9305,7 +8769,7 @@
     "note": ""
   },
   {
-    "TT": "23",
+    "TT": "22",
     "organization": "Công ty CP Thương mại Visnam",
     "name": "Nguyễn Thị Thùy Linh",
     "employee_code": "NV044192010784",
@@ -9315,7 +8779,7 @@
     "note": ""
   },
   {
-    "TT": "24",
+    "TT": "23",
     "organization": "Công ty CP Thương mại Visnam",
     "name": "Lê Thị Xuân Phương",
     "employee_code": "NV049194019165",
@@ -9325,7 +8789,7 @@
     "note": ""
   },
   {
-    "TT": "25",
+    "TT": "24",
     "organization": "Công ty CP Thương mại Visnam",
     "name": "Bùi Thị Xuân Nguyên",
     "employee_code": "NV051199002902",
@@ -9335,7 +8799,7 @@
     "note": ""
   },
   {
-    "TT": "26",
+    "TT": "25",
     "organization": "Công ty CP Thương mại Visnam",
     "name": "Phạm Thị Hằng",
     "employee_code": "NV051300009197",
@@ -9375,7 +8839,7 @@
     "note": ""
   },
   {
-    "TT": "4",
+    "TT": "5",
     "organization": "Công ty TNHH TMDV và đầu tư Khoa Linh",
     "name": "Trần Anh Vũ",
     "employee_code": "NV048082001349",
@@ -9385,7 +8849,7 @@
     "note": ""
   },
   {
-    "TT": "5",
+    "TT": "6",
     "organization": "Công ty TNHH TMDV và đầu tư Khoa Linh",
     "name": "Vũ Thị Hồng Loan",
     "employee_code": "NV015177 001605",
@@ -9395,7 +8859,7 @@
     "note": ""
   },
   {
-    "TT": "6",
+    "TT": "7",
     "organization": "Công ty TNHH TMDV và đầu tư Khoa Linh",
     "name": "Trần Thanh Hiền",
     "employee_code": "NV048073006487",
@@ -9405,7 +8869,7 @@
     "note": ""
   },
   {
-    "TT": "7",
+    "TT": "4",
     "organization": "Công ty TNHH TMDV và đầu tư Khoa Linh",
     "name": "Phan Thị Ngọc Hân",
     "employee_code": "NV349601661",
@@ -9465,16 +8929,6 @@
     "note": ""
   },
   {
-    "TT": "13",
-    "organization": "Công ty TNHH TMDV và đầu tư Khoa Linh",
-    "name": "Trần Thị Thanh Nga",
-    "employee_code": "NV045178003299",
-    "phone": "0916302777",
-    "collection_point": "22 Hàm Nghi",
-    "ward": "Thanh Khê",
-    "note": ""
-  },
-  {
     "TT": "1",
     "organization": "Công ty An sinh Anh Tuấn Minh",
     "name": "Dương Thị Ái Hương",
@@ -9518,7 +8972,7 @@
     "TT": "5",
     "organization": "Công ty An sinh Anh Tuấn Minh",
     "name": "Trương Thái Dương",
-    "employee_code": "Nv044085003274",
+    "employee_code": "NV044085003274",
     "phone": "0976983215",
     "collection_point": "525 tôn đức thắng",
     "ward": "Hòa Khánh",
@@ -10016,7 +9470,7 @@
   },
   {
     "TT": "48",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Đinh Thị Minh Nguyệt",
     "employee_code": "NV048179000731",
     "phone": "0914780567",
@@ -10026,7 +9480,7 @@
   },
   {
     "TT": "49",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Trần Thị Kim Loan",
     "employee_code": "NV048175008828",
     "phone": "0913391552",
@@ -10036,7 +9490,7 @@
   },
   {
     "TT": "50",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Nguyễn Văn Lãm",
     "employee_code": "NV034076022262",
     "phone": "0914744449",
@@ -10046,7 +9500,7 @@
   },
   {
     "TT": "51",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Lê Văn Thanh",
     "employee_code": "NV040074008537",
     "phone": "0946928999",
@@ -10056,7 +9510,7 @@
   },
   {
     "TT": "52",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Trương Ngọc Minh",
     "employee_code": "NV048094002614",
     "phone": "0911247359",
@@ -10066,7 +9520,7 @@
   },
   {
     "TT": "53",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Nguyễn Thị Hà",
     "employee_code": "NV049182001685",
     "phone": "0916221982",
@@ -10076,7 +9530,7 @@
   },
   {
     "TT": "54",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Phạm Thị Quang Duyên",
     "employee_code": "NV052178009197",
     "phone": "0914286060",
@@ -10086,7 +9540,7 @@
   },
   {
     "TT": "55",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Trần Thị Thái Hà",
     "employee_code": "NV048177000585",
     "phone": "0914112977",
@@ -10096,7 +9550,7 @@
   },
   {
     "TT": "56",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Lê Hải Vân",
     "employee_code": "NV044074012052",
     "phone": "0914076555",
@@ -10106,7 +9560,7 @@
   },
   {
     "TT": "57",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Hồ Quang Hưng",
     "employee_code": "NV042085050676",
     "phone": "0914525345",
@@ -10116,7 +9570,7 @@
   },
   {
     "TT": "58",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Trương Vĩnh Hậu",
     "employee_code": "NV048083003950",
     "phone": "0914619559",
@@ -10126,7 +9580,7 @@
   },
   {
     "TT": "59",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Trần Văn Hội",
     "employee_code": "NV040085039158",
     "phone": "0916628522",
@@ -10136,7 +9590,7 @@
   },
   {
     "TT": "60",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Trương Thị Bình",
     "employee_code": "NV001176042409",
     "phone": "0944202565",
@@ -10146,7 +9600,7 @@
   },
   {
     "TT": "61",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Nguyễn Thị Thu Hà",
     "employee_code": "NV056181003937",
     "phone": "0914455234",
@@ -10156,7 +9610,7 @@
   },
   {
     "TT": "62",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Đặng Ngọc Ánh",
     "employee_code": "NV048082006847",
     "phone": "0914333433",
@@ -10166,7 +9620,7 @@
   },
   {
     "TT": "63",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Đặng Đình Minh",
     "employee_code": "NV048078000584",
     "phone": "0914102888",
@@ -10176,7 +9630,7 @@
   },
   {
     "TT": "64",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Nguyễn Lương Kim",
     "employee_code": "NV048075005564",
     "phone": "0917014785",
@@ -10186,7 +9640,7 @@
   },
   {
     "TT": "65",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Nguyễn Phi Dũng",
     "employee_code": "NV056073007062",
     "phone": "0911730730",
@@ -10196,7 +9650,7 @@
   },
   {
     "TT": "66",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Dương Thanh Ái Quyên",
     "employee_code": "NV054193001890",
     "phone": "0941299429",
@@ -10206,7 +9660,7 @@
   },
   {
     "TT": "67",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Nguyễn Anh Tú",
     "employee_code": "NV048085006681",
     "phone": "0914941159",
@@ -10216,7 +9670,7 @@
   },
   {
     "TT": "68",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Nguyễn Thị Thu",
     "employee_code": "NV049186005849",
     "phone": "0949545678",
@@ -10226,7 +9680,7 @@
   },
   {
     "TT": "69",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "La Đình Phú",
     "employee_code": "NV048074004665",
     "phone": "0914470199",
@@ -10236,7 +9690,7 @@
   },
   {
     "TT": "70",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Lã Thị Út Huyền",
     "employee_code": "NV033183010008",
     "phone": "0915759468",
@@ -10246,7 +9700,7 @@
   },
   {
     "TT": "71",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Trần Thị Hương Giang",
     "employee_code": "NV035177006052",
     "phone": "0914725888",
@@ -10256,7 +9710,7 @@
   },
   {
     "TT": "72",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Trần Thị Ngọc Thúy",
     "employee_code": "NV049178001846",
     "phone": "0914001577",
@@ -10266,7 +9720,7 @@
   },
   {
     "TT": "73",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Ngô Xuân Bình",
     "employee_code": "NV022076005574",
     "phone": "0914146897",
@@ -10276,7 +9730,7 @@
   },
   {
     "TT": "74",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Hoàng Lê Hoài Trung",
     "employee_code": "NV019074001235",
     "phone": "0914913427",
@@ -10286,7 +9740,7 @@
   },
   {
     "TT": "75",
-    "organization": "Viễn thông Đà Nẵng (VNPT)",
+    "organization": "VNPT",
     "name": "Nguyễn Duy Dương",
     "employee_code": "NV048077004825",
     "phone": "0945575411",
@@ -10353,66 +9807,31 @@
     "collection_point": "K20/14 Lý Tự Trọng",
     "ward": "Liên Chiểu",
     "note": ""
-  },
-  {
-    "TT": "1",
-    "organization": "Công ty TNHH Thành Bảo Tín",
-    "name": "Trần Dân Sinh",
-    "employee_code": "NV4812016090",
-    "phone": "0905699997",
-    "collection_point": "136 Lý Đạo Thành",
-    "ward": "Phường An Hải",
-    "note": ""
-  },
-  {
-    "TT": "2",
-    "organization": "Công ty TNHH Thành Bảo Tín",
-    "name": "Hồ Thị Lợi",
-    "employee_code": "NV0400001450",
-    "phone": "0948890099",
-    "collection_point": "119 Châu Thị Vĩnh Tế",
-    "ward": "Phường Ngũ Hành Sơn",
-    "note": ""
   }
 ];
 
         let currentData = [...allData];
         let allLocations = [...new Set(allData.map(d => d.ward).filter(w => w))].sort();
-        let allOrgs = [...new Set(allData.map(d => d.organization).filter(o => o))].sort();
         let isDataVisible = false;
 
-        // Security: Escape HTML để ngăn XSS
         function escapeHtml(unsafe) {
             if (!unsafe) return '';
-            return unsafe
-                .toString()
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;")
-                .replace(/\//g, "&#x2F;");
+            return unsafe.toString()
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;').replace(/'/g, '&#039;').replace(/\//g, '&#x2F;');
         }
 
-        // Security: Validate và sanitize input
         function sanitizeInput(input) {
             if (!input) return '';
-            // Chỉ cho phép chữ, số, khoảng trắng và một số ký tự đặc biệt an toàn
-            return input
-                .toString()
-                .replace(/[^\w\sÀ-ỹ\-\.,]/g, '')
-                .substring(0, 200); // Giới hạn độ dài
+            return input.toString().replace(/[^\w\s\u00C0-\u1EF9\-\.,]/g, '').substring(0, 200);
         }
 
-        // Security: Rate limiting đơn giản
         let lastSearchTime = 0;
-        const SEARCH_COOLDOWN = 500; // 500ms giữa các lần search
+        const SEARCH_COOLDOWN = 500;
 
         function canPerformSearch() {
             const now = Date.now();
-            if (now - lastSearchTime < SEARCH_COOLDOWN) {
-                return false;
-            }
+            if (now - lastSearchTime < SEARCH_COOLDOWN) return false;
             lastSearchTime = now;
             return true;
         }
@@ -10420,85 +9839,49 @@
         function setupAutocomplete(inputId, listId, dataArray) {
             const input = document.getElementById(inputId);
             const list = document.getElementById(listId);
-
             input.addEventListener('input', function() {
                 const value = this.value.toLowerCase();
                 list.innerHTML = '';
-
-                if (value.length === 0) {
-                    list.classList.remove('show');
-                    return;
-                }
-
-                const filtered = dataArray.filter(item => 
-                    item.toLowerCase().includes(value)
-                ).slice(0, 10);
-
+                if (value.length === 0) { list.classList.remove('show'); return; }
+                const filtered = dataArray.filter(item => item.toLowerCase().includes(value)).slice(0, 10);
                 if (filtered.length > 0) {
                     filtered.forEach(item => {
                         const div = document.createElement('div');
                         div.className = 'autocomplete-item';
                         div.textContent = item;
-                        div.addEventListener('click', function() {
-                            input.value = item;
-                            list.classList.remove('show');
-                        });
+                        div.addEventListener('click', function() { input.value = item; list.classList.remove('show'); });
                         list.appendChild(div);
                     });
                     list.classList.add('show');
-                } else {
-                    list.classList.remove('show');
-                }
+                } else { list.classList.remove('show'); }
             });
-
-            document.addEventListener('click', function(e) {
-                if (e.target !== input) {
-                    list.classList.remove('show');
-                }
-            });
+            document.addEventListener('click', function(e) { if (e.target !== input) list.classList.remove('show'); });
         }
 
         setupAutocomplete('searchLocation', 'locationAutocomplete', allLocations);
-        
-        // Khởi tạo dropdown cho tổ chức
+
         function initOrgDropdown() {
             const selectOrg = document.getElementById('searchOrg');
-            const organizations = [...new Set(
-                allData
-                    .map(item => item.organization)
-                    .filter(Boolean)
-            )].sort((a, b) => a.localeCompare(b, 'vi'));
-
+            const organizations = [...new Set(allData.map(item => item.organization).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'vi'));
             organizations.forEach(org => {
-                const opt = document.createElement("option");
-                opt.value = org;
-                opt.textContent = org;
+                const opt = document.createElement('option');
+                opt.value = org; opt.textContent = org;
                 selectOrg.appendChild(opt);
             });
         }
         initOrgDropdown();
 
         function performSearch() {
-            // Security: Rate limiting
-            if (!canPerformSearch()) {
-                return; // Bỏ qua nếu search quá nhanh
-            }
-
+            if (!canPerformSearch()) return;
             isDataVisible = true;
-            
-            // Sanitize input để ngăn XSS
             const locationQuery = sanitizeInput(document.getElementById('searchLocation').value).toLowerCase().trim();
             const orgQuery = sanitizeInput(document.getElementById('searchOrg').value).toLowerCase().trim();
-
             currentData = allData.filter(item => {
                 const matchLocation = !locationQuery || item.ward.toLowerCase().includes(locationQuery);
                 const matchOrg = !orgQuery || item.organization.toLowerCase().includes(orgQuery);
                 return matchLocation && matchOrg;
             });
-
-            // Hiển thị stats container khi tìm kiếm
             document.getElementById('statsContainer').classList.remove('hidden');
-            
             updateStats();
             displayResults();
         }
@@ -10508,10 +9891,7 @@
             document.getElementById('searchOrg').value = '';
             isDataVisible = false;
             currentData = [...allData];
-            
-            // Ẩn stats container khi reset
             document.getElementById('statsContainer').classList.add('hidden');
-            
             updateStats();
             displayInitialMessage();
         }
@@ -10519,93 +9899,50 @@
         function updateStats() {
             const totalEmployees = allData.length;
             const filteredEmployees = currentData.length;
-            document.getElementById('statsRatio').textContent = `${filteredEmployees}/${totalEmployees}`;
+            document.getElementById('statsRatio').textContent = filteredEmployees + '/' + totalEmployees;
         }
 
         function displayInitialMessage() {
-            // Không hiển thị gì cả, để trống
-            const container = document.getElementById('resultsContainer');
-            container.innerHTML = '';
+            document.getElementById('resultsContainer').innerHTML = '';
         }
 
         function displayResults() {
             const container = document.getElementById('resultsContainer');
             container.innerHTML = '';
-
-            if (!isDataVisible) {
-                // Không hiển thị gì khi chưa tìm kiếm
-                return;
-            }
-
+            if (!isDataVisible) return;
             if (currentData.length === 0) {
-                container.innerHTML = `
-                    <div class="no-results">
-                        <div class="no-results-icon">😔</div>
-                        <h3>Không Tìm Thấy Kết Quả</h3>
-                        <p>Vui lòng thử lại với từ khóa khác</p>
-                    </div>
-                `;
+                container.innerHTML = '<div class="no-results"><div class="no-results-icon">😔</div><h3>Không Tìm Thấy Kết Quả</h3><p>Vui lòng thử lại với từ khóa khác</p></div>';
                 return;
             }
-
             currentData.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'result-card';
-
-                // Escape tất cả dữ liệu trước khi hiển thị
                 const safeOrg = escapeHtml(item.organization);
                 const safeName = escapeHtml(item.name) || 'Chưa cập nhật';
                 const safeEmpCode = escapeHtml(item.employee_code);
                 const safePoint = escapeHtml(item.collection_point) || 'Chưa cập nhật';
                 const safeWard = escapeHtml(item.ward) || 'Chưa cập nhật';
                 const safePhone = escapeHtml(item.phone) || 'Chưa cập nhật';
-
-                card.innerHTML = `
-                    <div class="card-header">
-                        <div class="card-icon">🏢</div>
-                        <div class="card-title">${safeOrg}</div>
-                    </div>
-                    <div class="card-info">
-                        <div class="info-row">
-                            <span class="info-label">👤 Nhân viên thu:</span>
-                            <span class="info-value">${safeName}</span>
-                        </div>
-                        ${safeEmpCode ? `
-                        <div class="info-row">
-                            <span class="info-label">🆔 Mã NV:</span>
-                            <span class="info-value">${safeEmpCode}</span>
-                        </div>
-                        ` : ''}
-                        <div class="info-row">
-                            <span class="info-label">📍 Điểm thu:</span>
-                            <span class="info-value">${safePoint}</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">🏘️ Phường/Xã:</span>
-                            <span class="info-value">${safeWard}</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">📞 Điện thoại:</span>
-                            <span class="info-value">${safePhone}</span>
-                        </div>
-                    </div>
-                `;
-                
+                card.innerHTML = '<div class="card-header"><div class="card-icon">🏢</div><div class="card-title">' + safeOrg + '</div></div>'
+                    + '<div class="card-info">'
+                    + '<div class="info-row"><span class="info-label">👤 Nhân viên thu:</span><span class="info-value">' + safeName + '</span></div>'
+                    + (safeEmpCode ? '<div class="info-row"><span class="info-label">🆔 Mã NV:</span><span class="info-value">' + safeEmpCode + '</span></div>' : '')
+                    + '<div class="info-row"><span class="info-label">📍 Điểm thu:</span><span class="info-value">' + safePoint + '</span></div>'
+                    + '<div class="info-row"><span class="info-label">🏘️ Phường/Xã:</span><span class="info-value">' + safeWard + '</span></div>'
+                    + '<div class="info-row"><span class="info-label">📞 Điện thoại:</span><span class="info-value">' + safePhone + '</span></div>'
+                    + '</div>';
                 container.appendChild(card);
             });
         }
 
-        document.getElementById('searchLocation').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') performSearch();
-        });
+        document.getElementById('searchLocation').addEventListener('keypress', function(e) { if (e.key === 'Enter') performSearch(); });
         document.getElementById('searchOrg').addEventListener('change', performSearch);
-
-        // Event listeners cho nút (an toàn hơn onclick inline)
         document.getElementById('btnSearch').addEventListener('click', performSearch);
         document.getElementById('btnReset').addEventListener('click', resetSearch);
 
         updateStats();
         displayInitialMessage();
+
     </script>
 </body>
 </html>
